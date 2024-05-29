@@ -1,6 +1,6 @@
 const express = require("express")
 
-const cors = require("cors")
+let cors = require("cors")
 const mongoose = require("mongoose")
 const timerRoute = require("./Routes/timerRoute")
 require("dotenv").config()
