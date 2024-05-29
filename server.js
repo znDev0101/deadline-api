@@ -6,7 +6,12 @@ const timerRoute = require("./Routes/timerRoute")
 require("dotenv").config()
 const app = express()
 
-app.use(cors())
+app.use(
+  cors({
+    origin: "*",
+    methods: ["POST", "GET", "PUT"],
+  })
+)
 
 // Middleware for parsing request body
 app.use(express.json())
@@ -22,18 +27,6 @@ mongoose
   .catch((error) => {
     console.log(error)
   })
-
-// Middleware for handling CORS POLICY
-// Option 1: Allow All Origins with Default of cors(*)
-
-// Option 2: Allow Custom Origins
-// app.use(
-//   cors({
-//     origin: 'http://localhost:3000',
-//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//     allowedHeaders: ['Content-Type'],
-//   })
-// );
 
 app.get("/", (request, response) => {
   console.log(request)
