@@ -16,8 +16,6 @@ router.post("/create-timer", async (req, res) => {
       setTimer: req.body.setTimer,
     }
 
-    // console.log(newTimer)
-
     const timer = await Timer.create(newTimer)
 
     return res.status(201).send(timer)
