@@ -1,6 +1,5 @@
-const express = require("express")
-
 const Timer = require("../models/timerModel.js")
+const express = require("express")
 
 const router = express.Router()
 

@@ -3,11 +3,11 @@ const mongoose = require("mongoose")
 const timerSchema = mongoose.Schema({
   uuid: {
     type: String,
-    require: true,
+    required: true,
   },
   setTimer: {
     type: Number,
-    require: true,
+    required: true,
   },
 })
 
