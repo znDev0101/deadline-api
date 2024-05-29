@@ -37,7 +37,7 @@ mongoose
 
 app.get("/", (request, response) => {
   console.log(request)
-  return response.status(234).send("Welcome To MERN Stack Tutorial")
+  return response.status(234).send("MERN STACK CONNECTED HAPPY CODE")
 })
 
 app.use("/timer", timerRoute)
