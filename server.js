@@ -2,16 +2,27 @@ const express = require("express")
 require("dotenv").config()
 const cors = require("cors")
 const mongoose = require("mongoose")
-const timerRoute = require("./Routes/timerRoute.js")
+const timerRoute = require("./Routes/timerRoute")
 
 const app = express()
+
+app.use(cors())
 
 // Middleware for parsing request body
 app.use(express.json())
 
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("App connected to database")
+  })
+  .catch((error) => {
+    console.log(error)
+  })
+
 // Middleware for handling CORS POLICY
 // Option 1: Allow All Origins with Default of cors(*)
-app.use(cors())
+
 // Option 2: Allow Custom Origins
 // app.use(
 //   cors({
@@ -28,14 +39,6 @@ app.get("/", (request, response) => {
 
 app.use("/timer", timerRoute)
 
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log("App connected to database")
-    app.listen(3000, () => {
-      console.log(`App is listening to port: 3000`)
-    })
-  })
-  .catch((error) => {
-    console.log(error)
-  })
+app.listen(3000, () => {
+  console.log(`App is listening to port: 3000`)
+})
