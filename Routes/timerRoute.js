@@ -17,6 +17,8 @@ router.post("/create-timer", async (req, res) => {
     const timer = await Timer.create(newTimer)
 
     return res.status(201).send(timer)
+
+    // console.log("oke bisa works")
   } catch (error) {
     console.log(error.message)
     res.status(500).send({ message: error.message })
