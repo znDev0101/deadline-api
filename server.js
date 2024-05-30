@@ -19,7 +19,7 @@ mongoose
   })
 
 const corsOptions = {
-  origin: ["https://dead-line-ku.vercel.app/", "*"],
+  origin: ["https://dead-line-ku.vercel.app", "*"],
   methods: "GET,POST,PUT,DELETE",
   allowedHeaders: "Content-Type,Authorization",
   credentials: true,
