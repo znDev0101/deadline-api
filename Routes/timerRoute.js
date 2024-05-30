@@ -10,14 +10,14 @@ router.post("/create-timer", async (req, res) => {
     //     message: "Send all required fields: title, author, publishYear",
     //   })
     // }
-    const newTimer = {
-      uuid: req.body.uuid,
-      setTimer: req.body.setTimer,
-    }
+    // const newTimer = {
+    //   uuid: req.body.uuid,
+    //   setTimer: req.body.setTimer,
+    // }
 
-    const timer = await Timer.create(newTimer)
+    // const timer = await Timer.create(newTimer)
 
-    return res.status(201).send(timer)
+    return res.status(201).send("its works")
   } catch (error) {
     console.log(error.message)
     res.status(500).send({ message: error.message })
