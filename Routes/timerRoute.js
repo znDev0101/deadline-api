@@ -4,7 +4,7 @@ const router = express.Router()
 
 router.post("/create-timer", async (req, res) => {
   try {
-    if (!req.body.uuid) {
+    if (!req.body.uuid || !req.body.setTimer) {
       return res.status(400).send({
         message: "Send all required fields: title, author, publishYear",
       })

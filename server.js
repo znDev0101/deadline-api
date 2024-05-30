@@ -18,13 +18,7 @@ mongoose
     console.log(error)
   })
 
-app.use(
-  cors({
-    origin: "http://dead-line-ku.vercel.app",
-    methods: ["POST", "GET", "PUT"],
-    credentials: true,
-  })
-)
+app.use(cors())
 
 // Middleware for parsing request body
 app.use(express.json())
