@@ -22,6 +22,7 @@ app.use(
   cors({
     origin: ["https://dead-line-ku.vercel.app"],
     methods: ["POST", "GET", "PUT"],
+    credentials: true,
   })
 )
 
