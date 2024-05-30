@@ -18,14 +18,12 @@ mongoose
     console.log(error)
   })
 
-const corsOptions = {
-  origin: ["https://dead-line-ku.vercel.app", "*"],
-  methods: "GET,POST,PUT,DELETE",
-  allowedHeaders: "Content-Type,Authorization",
-  credentials: true,
-}
-
-app.use(cors(corsOptions))
+app.use(
+  cors({
+    origin: ["https://dead-line-ku.vercel.app"],
+    methods: ["POST", "GET", "PUT"],
+  })
+)
 
 // Middleware for parsing request body
 app.use(express.json())
