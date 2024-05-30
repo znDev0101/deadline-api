@@ -6,6 +6,18 @@ const timerRoute = require("./Routes/timerRoute")
 require("dotenv").config()
 const app = express()
 
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("App connected to database")
+  })
+  .catch((error) => {
+    console.log(error)
+  })
+
 app.use(cors())
 
 // Middleware for parsing request body
@@ -21,14 +33,3 @@ app.use("/timer", timerRoute)
 app.listen(3000, () => {
   console.log(`App is listening to port: 3000`)
 })
-mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("App connected to database")
-  })
-  .catch((error) => {
-    console.log(error)
-  })
