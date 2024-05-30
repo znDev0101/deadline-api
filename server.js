@@ -6,7 +6,12 @@ const timerRoute = require("./Routes/timerRoute")
 require("dotenv").config()
 const app = express()
 
-app.use(cors())
+app.use(
+  cors({
+    origin: "https://dead-line-ku.vercel.app",
+    methods: ["POST", "GET"],
+  })
+)
 
 // Middleware for parsing request body
 app.use(express.json())
