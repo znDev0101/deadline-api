@@ -4,11 +4,11 @@ const router = express.Router()
 
 router.post("/create-timer", async (req, res) => {
   try {
-    // if (!req.body.uuid) {
-    //   return res.status(400).send({
-    //     message: "Send all required fields: title, author, publishYear",
-    //   })
-    // }
+    if (!req.body.uuid) {
+      return res.status(400).send({
+        message: "Send all required fields: title, author, publishYear",
+      })
+    }
     const newTimer = {
       uuid: req.body.uuid,
       setTimer: req.body.setTimer,
