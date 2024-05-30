@@ -20,7 +20,7 @@ mongoose
 
 app.use(
   cors({
-    origin: "https://dead-line-ku.vercel.app",
+    origin: "http://dead-line-ku.vercel.app",
     methods: ["POST", "GET", "PUT"],
     credentials: true,
   })
