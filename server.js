@@ -19,17 +19,19 @@ app.get("/", (request, response) => {
 app.use("/timer", timerRoute)
 
 mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://zulfanurhuda01:zulfatasik28@timer-countdown.thkne8y.mongodb.net/?retryWrites=true&w=majority&appName=Timer-countdown",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(() => {
     console.log("App connected to database")
+    app.listen(3000, () => {
+      console.log(`App is listening to port: 3000`)
+    })
   })
   .catch((error) => {
     console.log(error)
   })
-
-app.listen(3000, () => {
-  console.log(`App is listening to port: 3000`)
-})
