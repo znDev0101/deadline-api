@@ -6,7 +6,12 @@ const timerRoute = require("./Routes/timerRoute")
 require("dotenv").config()
 const app = express()
 
-app.use(cors())
+app.use(
+  cors({
+    origin: "*",
+    methods: ["POST", "PUT"],
+  })
+)
 
 // Middleware for parsing request body
 app.use(express.json())
