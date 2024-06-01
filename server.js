@@ -8,7 +8,7 @@ const app = express()
 
 app.use(
   cors({
-    origin: "*",
+    origin: ["*", "https://dead-line-ku.vercel.app"],
     methods: ["POST", "PUT"],
   })
 )
