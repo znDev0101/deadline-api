@@ -1,44 +1,36 @@
 const express = require("express")
 
 let cors = require("cors")
-const mongoose = require("mongoose")
 const timerRoute = require("./Routes/timerRoute")
 require("dotenv").config()
 const app = express()
+const port = 3000
 
-app.use(
-  cors({
-    origin: ["*", "https://dead-line-ku.vercel.app"],
-    methods: ["POST", "PUT"],
-  })
-)
+const corsOptions = {
+  origin: "https://timlist.my.id",
+  optionsSuccessStatus: 200,
+}
+
+app.use(cors(corsOptions))
 
 // Middleware for parsing request body
 app.use(express.json())
 
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "http://timlist.my.id") // update to match the domain you will make the request from
+//   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization")
+//   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+//   res.header("Access-Control-Allow-Credentials", true)
+//   next()
+// })
+
+app.listen(port, () => console.log(`app listening port : ${port}`))
+
 app.get("/", (request, response) => {
   console.log(request)
-  return response.status(234).send("MERN STACK CONNECTED HAPPY CODE")
+  return response.status(234).send("PERN STACK CONNECTED HAPPY CODE")
 })
 
-app.use("/timer", timerRoute)
-
-mongoose
-  .connect(
-    "mongodb+srv://zulfanurhuda01:zulfatasik28@timer-countdown.thkne8y.mongodb.net/?retryWrites=true&w=majority&appName=Timer-countdown",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
-  .then(() => {
-    console.log("App connected to database")
-    app.listen(3000, () => {
-      console.log(`App is listening to port: 3000`)
-    })
-  })
-  .catch((error) => {
-    console.log(error)
-  })
+app.use("/api/v1/settimers", timerRoute)
 
 module.exports = app
